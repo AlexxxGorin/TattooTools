@@ -1,0 +1,52 @@
+[
+  {
+      "id": 1,
+      "prompt": "A minimalistic black and white tribal tattoo with sharp lines",
+      "style": "tribal",
+      "details": {
+          "color": "black and white",
+          "focus": "sharp lines",
+          "size": "medium"
+      }
+  },
+  {
+      "id": 2,
+      "prompt": "A realistic portrait tattoo of a lion with intricate details",
+      "style": "realistic",
+      "details": {
+          "color": "black and gray",
+          "focus": "lion",
+          "size": "large"
+      }
+  },
+  {
+      "id": 3,
+      "prompt": "A geometric tattoo design with circles and triangles in black",
+      "style": "geometric",
+      "details": {
+          "color": "black",
+          "focus": "circles and triangles",
+          "size": "small"
+      }
+  },
+  {
+      "id": 4,
+      "prompt": "A colorful watercolor tattoo of a phoenix in flight",
+      "style": "watercolor",
+      "details": {
+          "color": "red, orange, yellow",
+          "focus": "phoenix in flight",
+          "size": "large"
+      }
+  },
+  {
+      "id": 5,
+      "prompt": "A traditional Japanese dragon tattoo with vibrant colors",
+      "style": "traditional",
+      "details": {
+          "color": "vibrant colors",
+          "focus": "Japanese dragon",
+          "size": "full sleeve"
+      }
+  }
+]

@@ -1,0 +1,21 @@
+data:
+  train_path: "./data/processed/train"
+  val_path: "./data/processed/val"
+  batch_size: 16
+
+model:
+  unet_checkpoint: "./models/unet"
+  text_encoder_checkpoint: "./models/text_encoder"
+  tokenizer_checkpoint: "./models/tokenizer"
+  # text_encoder: "openai/clip-vit-base-patch32"
+  # scheduler: "path_to_pretrained_scheduler"
+  # unet: "path_to_pretrained_unet"
+  # model_save_path: "models/checkpoints"
+
+training:
+  epochs: 10
+  learning_rate: 0.0001
+  device: "cuda"  
+
+logging:
+  log_dir: "./logs"

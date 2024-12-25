@@ -1,0 +1,38 @@
+# Основные библиотеки для глубокого обучения
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.1
+
+# Hugging Face diffusers и Transformers
+diffusers==0.18.2
+transformers==4.33.2
+
+# Инструменты для работы с изображениями
+Pillow==10.0.0
+
+# Инструменты для обработки данных
+numpy==1.24.3
+pandas==2.0.3
+scikit-image==0.21.0
+
+# Для прогресс-баров
+tqdm==4.66.1
+
+# Для логирования и анализа
+tensorboard==2.14.1
+
+# Для визуализации
+matplotlib==3.7.1
+wordcloud==1.9.2
+
+# Для обработки конфигураций
+pyyaml==6.0
+
+# Для ускорения обучения (опционально)
+accelerate==0.22.0
+
+# Для оценки метрик (например, FID)
+torchmetrics==1.0.1
+
+
+# pip install -r requirements.txt
