@@ -30,16 +30,10 @@ def generate_images(prompts, model, text_encoder, tokenizer, scheduler, device):
 
     with torch.no_grad():
         for prompt in tqdm(prompts, desc="Генерация изображений"):
-            # Токенизация текста
             inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True).to(device)
-
-            # Генерация случайного шума
             noise = torch.randn((1, 3, 256, 256)).to(device)
-
-            # Декодирование изображения
             image = scheduler.step(noise, model, text_embeds=text_encoder(**inputs).last_hidden_state)["prev_sample"]
 
-            # Постобработка
             image = (image[0].cpu().clamp(-1, 1) + 1) / 2  # Масштабирование от -1..1 в 0..1
             generated_images.append(ToPILImage()(image))
     return generated_images
@@ -56,7 +50,6 @@ def calculate_metrics(real_images, generated_images):
         real = np.array(real).astype(np.float32) / 255.0
         generated = np.array(generated).astype(np.float32) / 255.0
 
-        # Вычисление SSIM и PSNR
         ssim_scores.append(ssim(real, generated, multichannel=True))
         psnr_scores.append(psnr(real, generated))
 
@@ -66,28 +59,19 @@ def calculate_metrics(real_images, generated_images):
 
 # === Основная функция ===
 def main():
-    # Загрузка конфигурации
     config = load_config()
-
-    # Установка устройства
     device = config["training"]["device"]
-
-    # Загрузка данных
     prompts, image_paths = load_data(config["data"]["data_path"], config["data"]["batch_size"])
 
-    # Загрузка модели
     text_encoder = CLIPTextModel.from_pretrained(config["model"]["text_encoder"]).to(device)
     tokenizer = CLIPTokenizer.from_pretrained(config["model"]["text_encoder"])
     unet = UNet2DConditionModel.from_pretrained(config["model"]["unet"]).to(device)
     scheduler = DDPMScheduler.from_pretrained(config["model"]["scheduler"])
 
-    # Генерация изображений
     generated_images = generate_images(prompts, unet, text_encoder, tokenizer, scheduler, device)
 
-    # Загрузка реальных изображений
     real_images = [Image.open(path) for path in image_paths]
 
-    # Оценка качества
     avg_ssim, avg_psnr = calculate_metrics(real_images, generated_images)
     print(f"Средний SSIM: {avg_ssim:.4f}")
     print(f"Средний PSNR: {avg_psnr:.4f}")
@@ -99,7 +83,6 @@ def main():
 
     print(f"FID: {fid.compute().item():.4f}")
 
-    # Сохранение примеров изображений
     os.makedirs("evaluation_results", exist_ok=True)
     for i, img in enumerate(generated_images[:5]):  # Сохраним первые 5 изображений
         img.save(f"evaluation_results/generated_{i}.png")

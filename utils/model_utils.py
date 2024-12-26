@@ -78,36 +78,3 @@ def get_model_summary(model):
     print(f"Общее количество параметров: {total_params:,}")
     print(f"Обучаемые параметры: {trainable_params:,}")
     return total_params, trainable_params
-
-
-# Загрузка UNet модели:
-# from utils.model_utils import load_unet_model
-
-# unet_model = load_unet_model("path_to_unet", device="cuda")
-
-
-# Загрузка текстового энкодера CLIP:
-# from utils.model_utils import load_clip_text_encoder
-
-# text_encoder, tokenizer = load_clip_text_encoder(
-#     "openai/clip-vit-base-patch32", 
-#     "openai/clip-vit-base-patch32", 
-#     device="cuda"
-# )
-
-
-# Сохранение и загрузка чекпойнта:
-# from utils.model_utils import save_model_checkpoint, load_model_checkpoint
-
-# # Сохранение модели
-# save_model_checkpoint(unet_model, "models/checkpoints/unet_epoch_10")
-
-# # Загрузка модели из чекпойнта
-# unet_model = load_model_checkpoint(unet_model, "models/checkpoints/unet_epoch_10/pytorch_model.bin")
-
-
-
-# Вывод информации о модели:
-# from utils.model_utils import get_model_summary
-
-# total_params, trainable_params = get_model_summary(unet_model)

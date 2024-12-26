@@ -104,24 +104,3 @@ def split_data(prompts, image_paths, split_ratios=(0.8, 0.1, 0.1), seed=42):
     test_data = data[train_size + val_size:]
 
     return train_data, val_data, test_data
-
-
-# from utils.data_utils import load_prompts_and_images
-
-# prompts, image_paths = load_prompts_and_images("data/processed_data.pt")
-# print(prompts[:5])
-# print(image_paths[:5])
-
-
-# from utils.data_utils import create_dataloader
-
-# dataloader = create_dataloader(prompts, image_paths, batch_size=8)
-# for batch in dataloader:
-#     tokenized_prompts, images = batch
-#     print(tokenized_prompts["input_ids"].shape)  # (batch_size, max_length)
-#     print(images.shape)  # (batch_size, 3, 256, 256)
-
-# from utils.data_utils import split_data
-
-# train_data, val_data, test_data = split_data(prompts, image_paths)
-# print(f"Train: {len(train_data)}, Val: {len(val_data)}, Test: {len(test_data)}")
