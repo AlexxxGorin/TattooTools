@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "tattootools"
+version = "0.1.0"
+description = ""
+authors = ["Горин Александр Олегович <alexgorin@mts.ru>"]
+license = "Unilicence"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+transforms = "^0.2.1"
+transformers = "^4.47.1"
+torchvision = "^0.20.1"
+fastapi = "^0.115.6"
+diffusers = "^0.32.1"
+matplotlib = "^3.10.0"
+torchmetrics = "^1.6.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
